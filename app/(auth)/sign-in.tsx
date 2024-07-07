@@ -1,7 +1,6 @@
 import { View, Text, ScrollView, Image } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import FormField from '@/components/FormField'
 
 const SignIn = () => {
    const [form, setForm] = useState({
@@ -11,6 +10,7 @@ const SignIn = () => {
    return (
       <SafeAreaView>
          <ScrollView>
+         {/* 
             <View>
                <Image
                   source={undefined}
@@ -31,7 +31,7 @@ const SignIn = () => {
                handleChange={(e : any) => setForm({ ...form, password: e })}
                otherStyles="mt-7"
                keyboardType="email-address"
-            />
+            /> */}
          </ScrollView>
       </SafeAreaView>
    )
