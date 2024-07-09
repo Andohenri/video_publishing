@@ -1,23 +1,23 @@
 import { useState } from "react";
 import { ResizeMode, Video } from "expo-av";
-import Animated, { useSharedValue, useAnimatedStyle, withTiming } from "react-native-reanimated";
+import Animated, { useSharedValue, useAnimatedStyle, withTiming, Easing } from "react-native-reanimated";
 
 import { FlatList, Image, ImageBackground, TouchableOpacity } from "react-native";
 import { icons, images } from "../constants";
 
 const TrendingItem = ({ activeItem, item }) => {
   const [play, setPlay] = useState(false);
-  // const scale = useSharedValue(0.9);
+  const scale = useSharedValue(0.9);
 
-  // const animatedStyles = useAnimatedStyle(() => {
-  //   return {
-  //     transform: [{ scale: scale.value = withTiming(activeItem === item.id ? 1 : 0.9, { duration: 500 }) }]
-  //   }
-  // })
+  const animatedStyles = useAnimatedStyle(() => {
+    return {
+      transform: [{ scale: scale.value = withTiming(activeItem === item.id ? 1 : 0.9, { duration: 500, easing: Easing.bezier(0.5, 0.01, 0, 1) }) }]
+    }
+  })
 
   return (
     <Animated.View
-      className="mr-5"
+      style={[{marginRight: "1.25rem"}, animatedStyles]}
     >
       {play ? (
         <Video
