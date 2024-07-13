@@ -7,6 +7,7 @@ import { router, Link } from 'expo-router'
 import { signIn } from '../../lib/appwrite'
 import { useGlobalContext } from '../../contexts/GlobalProvider'
 import { images } from '../../constants'
+import { toast } from '../../lib/toast'
 
 const SignIn = () => {
    const { setUser, setIsLogged } = useGlobalContext();
@@ -18,7 +19,7 @@ const SignIn = () => {
    const [isSubmitting, setIsSubmitting] = useState(false)
    const submit = async () => {
       if (form.email === "" || form.password === "") {
-         Alert.alert("Error", "Please fill in all fields");
+         toast("Please fill in all fields");
       }
 
       try {
@@ -28,10 +29,10 @@ const SignIn = () => {
          setUser(result);
          setIsLogged(true);
 
-         Alert.alert("Success", "User signed in successfully");
+         toast("Success", "User signed in successfully");
          router.replace("/home");
       } catch (error) {
-         Alert.alert("Error", error.message);
+         Alert.alert(error.message);
       } finally {
          setIsSubmitting(false);
       }

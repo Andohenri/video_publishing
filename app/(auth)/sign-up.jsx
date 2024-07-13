@@ -7,6 +7,7 @@ import CustomButton from '../../components/CustomButton'
 import { images } from '../../constants'
 import { Link } from 'expo-router'
 import { useGlobalContext } from '@/contexts/GlobalProvider'
+import { toast } from '@/lib/toast'
 
 const SignUp = () => {
   const { setUser, setIsLogged } = useGlobalContext();
@@ -20,7 +21,7 @@ const SignUp = () => {
 
   const submit = async () => {
     if (form.username === "" || form.email === "" || form.password === "") {
-      Alert.alert("Error", "Please fill in all fields");
+      toast("Please fill in all fields");
     }
 
     setIsSubmitting(true);
@@ -31,7 +32,7 @@ const SignUp = () => {
 
       router.replace("/home");
     } catch (error) {
-      Alert.alert("Error", error.message);
+      toast(error.message);
     } finally {
       setIsSubmitting(false);
     }

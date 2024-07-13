@@ -11,7 +11,7 @@ const TrendingItem = ({ activeItem, item }) => {
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
-      transform: [{ scale: scale.value = withTiming(activeItem === item.id ? 1 : 0.9, { duration: 500, easing: Easing.bezier(0.5, 0.01, 0, 1) }) }]
+      transform: [{ scale: scale.value = withTiming(activeItem === item.$id ? 1 : 0.9, { duration: 500, easing: Easing.bezier(0.5, 0.01, 0, 1) }) }]
     }
   })
 
@@ -39,7 +39,7 @@ const TrendingItem = ({ activeItem, item }) => {
           onPress={() => setPlay(true)}
         >
           <ImageBackground
-            source={images.thumbnail}
+            source={item.thumbnail}
             className="w-52 h-72 rounded-[33px] mt-3 overflow-hidden shadow-lg shadow-black/40"
             resizeMode="cover"
           />
