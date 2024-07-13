@@ -3,8 +3,8 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
-import { StatusBar } from 'expo-status-bar'
-// Prevent the splash screen from auto-hiding before asset loading is complete.
+import GlobalProvider from '../contexts/GlobalProvider';
+
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -31,7 +31,7 @@ export default function RootLayout() {
   }
 
   return (
-    <>
+    <GlobalProvider>
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="(auth)" options={{ headerShown: false }} />
@@ -39,6 +39,6 @@ export default function RootLayout() {
         <Stack.Screen name="search/[query]" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
-    </>
+    </GlobalProvider>
   );
 }
