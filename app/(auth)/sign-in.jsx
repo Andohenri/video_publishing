@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, Image, Alert } from 'react-native'
+import { View, Text, ScrollView, Image } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import FormField from '../../components/FormField'
@@ -32,7 +32,7 @@ const SignIn = () => {
          toast("Success", "User signed in successfully");
          router.replace("/home");
       } catch (error) {
-         Alert.alert(error.message);
+         toast(error.message);
       } finally {
          setIsSubmitting(false);
       }

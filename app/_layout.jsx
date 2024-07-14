@@ -5,6 +5,8 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 import GlobalProvider from '../contexts/GlobalProvider';
 
+import 'react-native-url-polyfill/auto';
+
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {

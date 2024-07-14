@@ -8,6 +8,7 @@ import { images } from '../constants'
 import CustomButton from '../components/CustomButton'
 import { useGlobalContext } from '../contexts/GlobalProvider'
 import Loader from '../components/Loader'
+import 'react-native-url-polyfill/auto';
 
 const App = () => {
   const { isLoading, isLogged } = useGlobalContext()
@@ -32,6 +33,7 @@ const App = () => {
             title="Continue with Email"
             handlePress={() => router.push('/sign-in')}
             containerStyle='w-full my-7'
+            isLoading={isLoading}
           />
         </View>
       </ScrollView>

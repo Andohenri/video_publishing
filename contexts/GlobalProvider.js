@@ -1,8 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { getCurrentUser } from "../lib/appwrite";
+import { toast } from '../lib/toast'
 
 const GlobalContext = createContext();
-export const useGlobalContext = useContext(GlobalContext);
+export const useGlobalContext = () => useContext(GlobalContext);
 
 const GlobalProvider = ({ children }) => {
    const [isLogged, setIsLogged] = useState(false);
@@ -21,7 +22,7 @@ const GlobalProvider = ({ children }) => {
             }
          })
          .catch((error) => {
-            console.log(error);
+            toast(error);
          })
          .finally(() => {
             setIsLoading(false);
